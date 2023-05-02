@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'ak/cloud-storage.local',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '114ff856c69fd64dd8ddd31d92018fd92acd6bbb',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'ak/cloud-storage.local' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '114ff856c69fd64dd8ddd31d92018fd92acd6bbb',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'gabordemooij/redbean' => array(
+            'pretty_version' => 'v5.7.4',
+            'version' => '5.7.4.0',
+            'reference' => '274c426583d91b20a1e39968b2e20969ef83cd1d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../gabordemooij/redbean',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.8.0',
+            'version' => '6.8.0.0',
+            'reference' => 'df16b615e371d81fb79e506277faea67a1be18f1',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

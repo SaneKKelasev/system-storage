@@ -1,10 +1,12 @@
 <?php
 
-$urlList = [
-    '/funds/' => [
-        'GET' => 'Funds::list()',
-        'POST' => 'Funds::add() '
-    ],
-];
+require_once dirname(__DIR__) . '/config/init.php';
+require_once CONFIG . '/routes.php';
 
-echo 'this';
+use Route\Router;
+
+$query = trim(urldecode($_SERVER['QUERY_STRING']), '/');
+$method = $_SERVER['REQUEST_METHOD'];
+
+$router = new Router($urlList);
+$router->dispatch($query, $method);

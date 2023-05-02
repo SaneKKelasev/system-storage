@@ -1,0 +1,24 @@
+version: '3.5'
+
+services:
+  # MySQL Service
+  application-mysql:
+    image: library/mysql:8.0
+    container_name: application-mysql
+    restart: always
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 123456
+      SERVICE_NAME: mysql
+    volumes:
+      - applicationMysqlData:/var/lib/mysql
+      - applicationMysqlFiles:/var/lib/mysql-files
+
+#Docker Volumes
+volumes:
+  applicationMysqlData:
+  applicationMysqlFiles:
