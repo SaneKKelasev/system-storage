@@ -40,14 +40,7 @@ class Router
     public function dispatch($url, $method)
     {
         $params = explode('&', $url);
-        $id = null;
         $url = $params[0];
-
-        foreach ($params as $param) {
-            if (str_contains($param, 'id')) {
-                $id = explode('=', $param)[1];
-            }
-        }
 
         if (
             array_key_exists($url ,self::$routes) &&
@@ -57,6 +50,10 @@ class Router
 
             if ($url === '') {
                 $url = 'HomePage';
+            }
+
+            if (str_contains($url, '/')) {
+                $url = implode('\\', array_map(fn($url) => ucwords($url), explode('/', $url)));
             }
 
             $className = ucwords($url) . 'Controller';
@@ -69,9 +66,7 @@ class Router
                 $className = 'UserController';
             }
 
-            if ($id && is_numeric($id)) {
-                $controller($id);
-            } elseif (class_exists('App\Controller\\' . $className)) {
+            if (class_exists('App\Controller\\' . $className)) {
                 $controller();
             } else {
                 require_once WWW . '/404.php';

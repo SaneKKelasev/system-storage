@@ -130,4 +130,19 @@ class UserModel
         return password_verify($password , $user->password);
     }
 
+    public static function isRoleAdmin(string $email)
+    {
+        new BaseModel();
+
+        $user = R::findOne('user', 'email LIKE :email', [':email' => $email]);
+
+        if (! $user) {
+            throw new \Exception(
+                'Данный пользователь не найден'
+            );
+        }
+
+        return $user->role === 'admin';
+    }
+
 }

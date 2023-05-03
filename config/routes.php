@@ -35,4 +35,11 @@ $urlList = [
             'GET' => 'UserController::resetPassword',
         ]
     ],
+    [
+        'admin/user' => [
+            'GET' => 'Admin\UserController::list',
+            'DELETE' => 'Admin\UserController::delete',
+            'PUT' => 'Admin\UserController::update',
+        ]
+    ],
 ];

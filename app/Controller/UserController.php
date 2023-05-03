@@ -7,12 +7,14 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class UserController
 {
-    public static function list(?int $id = null): void
+    public static function list(): void
     {
         $users = [];
         $emails = [];
 
-        if ($id) {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
             $users = UserModel::getUser($id);
             $emails = $users->email;
         } else {
@@ -47,12 +49,14 @@ class UserController
 
     }
 
-    public static function update(int $id = null): void
+    public static function update(): void
     {
-        if (! $id) {
+        if (! isset($_GET['id'])) {
             echo 'This user not found';
             die();
         }
+
+        $id = $_GET['id'];
 
         $_PUT = json_decode(file_get_contents("php://input"), true);
 
@@ -61,10 +65,14 @@ class UserController
             ! empty($_PUT['password']) ||
             ! empty($_PUT['role'])
         ) {
+            if (! empty($_PUT['password'])) {
+                $password = password_hash($_PUT['password'], PASSWORD_DEFAULT);
+            }
+
             UserModel::updateUser(
                 $id,
                 $_PUT['email'] ?? null,
-                password_hash($_PUT['password'], PASSWORD_DEFAULT) ?? null,
+                $password ?? null,
                 $_PUT['role'] ?? null
             );
         } else {
@@ -77,10 +85,12 @@ class UserController
 
     public static function delete(int $id = null): void
     {
-        if (! $id) {
+        if (! isset($_GET['id'])) {
             echo 'This user not found';
             die();
         }
+
+        $id = $_GET['id'];
 
         UserModel::deleteUser($id);
     }
@@ -101,12 +111,18 @@ class UserController
 
                 if (! setcookie('session_id', session_id(), time() + 3600, '/')) {
                     echo 'Cookie не установился';
+                } else {
+                    echo 'Вы успешно вошли';
                 }
             } else {
                 throw new \Exception(
                     'Данные пользователя введены не верно'
                 );
             }
+        } else {
+            throw new \Exception(
+                'Введите данные пользователя'
+            );
         }
 
     }
