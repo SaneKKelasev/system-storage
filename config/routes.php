@@ -21,6 +21,11 @@ $urlList = [
         ]
     ],
     [
+        'user/search' => [
+            'GET' => 'UserController::search',
+        ]
+    ],
+    [
         'login' => [
             'GET' => 'UserController::login',
         ]
@@ -40,6 +45,29 @@ $urlList = [
             'GET' => 'Admin\UserController::list',
             'DELETE' => 'Admin\UserController::delete',
             'PUT' => 'Admin\UserController::update',
+        ]
+    ],
+    [
+        'file' => [
+            'GET' => 'FileController::list',
+            'POST' => 'FileController::add',
+            'PUT' => 'FileController::update',
+            'DELETE' => 'FileController::delete',
+        ]
+    ],
+    [
+        'files/share' => [
+            'GET' => 'FileController::getShare',
+            'PUT' => 'FileController::addShare',
+            'DELETE' => 'FileController::deleteShare',
+        ]
+    ],
+    [
+        'directory' => [
+            'GET' => 'DirectoryController::list',
+            'POST' => 'DirectoryController::add',
+            'PUT' => 'DirectoryController::update',
+            'DELETE' => 'DirectoryController::delete',
         ]
     ],
 ];

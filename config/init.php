@@ -3,6 +3,7 @@
 const DEBUG = 1;
 define("ROOT", dirname(__DIR__));
 define("TEMPLATE", ROOT . '/template');
+define("FILE_SYSTEM", ROOT . '/file_system');
 define("WWW", ROOT . '/public');
 define("ASSET", ROOT . '/asset');
 define("APP", ROOT . '/app');

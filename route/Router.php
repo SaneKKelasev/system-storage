@@ -5,7 +5,6 @@ namespace Route;
 class Router
 {
     protected static array $routes = [];
-    protected static array $route = [];
 
     public function __construct($routes)
     {
@@ -25,16 +24,6 @@ class Router
         foreach ($urlList as $url => $method) {
             self::$routes[$url] = $method;
         }
-    }
-
-    public function getRoutes(): array
-    {
-        return self::$routes;
-    }
-
-    public function getRoute(): array
-    {
-        return self::$route;
     }
 
     public function dispatch($url, $method)
@@ -61,9 +50,14 @@ class Router
             if (
                 $url === 'login' ||
                 $url === 'logout' ||
-                $url === 'reset_password'
+                $url === 'reset_password' ||
+                $url === 'User\Search'
             ) {
                 $className = 'UserController';
+            }
+
+            if ($url === 'Files\Share') {
+                $className = 'FileController';
             }
 
             if (class_exists('App\Controller\\' . $className)) {

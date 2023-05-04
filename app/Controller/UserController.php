@@ -176,4 +176,17 @@ class UserController
 
     }
 
+    public static function search()
+    {
+
+        if (! isset($_GET['email'])) {
+            echo 'вы не ввели email';
+            die();
+        }
+
+        $user = UserModel::getUserToEmail($_GET['email']);
+
+        echo $user;
+    }
+
 }
