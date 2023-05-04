@@ -49,7 +49,7 @@ class FileModel
 
         if (! $file->name) {
             throw new \Exception(
-                'Пользователь с таким $id не найден'
+                'File с таким $id не найден'
             );
         }
 
@@ -65,7 +65,7 @@ class FileModel
 
         if (! $file->name) {
             throw new \Exception(
-                'Пользователь с таким $id не найден'
+                'File с таким $id не найден'
             );
         }
 
@@ -82,7 +82,7 @@ class FileModel
 
         if (! $file->name) {
             throw new \Exception(
-                'Пользователь с таким $id не найден'
+                'File с таким $id не найден'
             );
         }
 
@@ -100,7 +100,7 @@ class FileModel
 
         if (! $file->name) {
             throw new \Exception(
-                'Пользователь с таким $id не найден'
+                'File с таким $id не найден'
             );
         }
 
@@ -116,7 +116,7 @@ class FileModel
 
         if (! $file->name) {
             throw new \Exception(
-                'Пользователь с таким $id не найден'
+                'Fale с таким $id не найден'
             );
         }
 
